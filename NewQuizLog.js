@@ -223,3 +223,32 @@ function storeHighScores(event) {
     // show current highscores
     showHighScores();
 }
+
+// function to show high scores
+// set variable and value
+var i = 0;
+function showHighScores() {
+    // play with css properties
+    startDiv.style.display = "none";
+    Timer.style.display = "none";
+    questionDiv.style.display = "none";
+    done.style.display = "none";
+    summary.style.display = "none";
+    highScoreSection.style.display = "block";
+
+    var savedHighScores = localStorage.getItem("high scores");
+
+    // check local storage
+    if (savedHighScores === null) {
+        return;
+    }
+    console.log(savedHighScores);
+
+    var storedHighScores = JSON.parse(savedHighScores);
+    // create for loop
+    for (; i < storedHighScores.length; i++) {
+        var eachNewHighScore = document.createElement("p");
+        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score;
+        listOfHighScores.appendChild(eachNewHighScore);
+    }
+}
