@@ -252,3 +252,30 @@ function showHighScores() {
         listOfHighScores.appendChild(eachNewHighScore);
     }
 }
+
+// start quiz
+startQuizBtn.addEventListener("click", newQuiz);
+// elections
+choiceA.addEventListener("click", chooseA);
+choiceB.addEventListener("click", chooseB);
+choiceC.addEventListener("click", chooseC);
+choiceD.addEventListener("click", chooseD);
+// submit initials
+submitInitialBtn.addEventListener("click", function (event) {
+    storeHighScores(event);
+});
+// view high scores
+viewHighScore.addEventListener("click", function (event) {
+    showHighScores(event);
+});
+// go back 
+goBackBtn.addEventListener("click", function () {
+    startDiv.style.display = "block";
+    highScoreSection.style.display = "none";
+});
+// clears scores
+clearHighScoreBtn.addEventListener("click", function () {
+    window.localStorage.removeItem("high scores");
+    listOfHighScores.innerHTML = "clearwd High Scores!";
+
+});
