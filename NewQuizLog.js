@@ -181,3 +181,45 @@ function gameOver() {
     // show final score
     finalScore.textContent = correctAns;
 }
+
+// enter initial and store highscore in local storage
+function storeHighScores(event) {
+    event.preventDefault();
+
+    // stop function is initial is blank
+    if (initialInput.value === "") {
+        alert("Please enter your initials!");
+        return;
+    }
+
+    startDiv.style.display = "none";
+    Timer.style.display = "none";
+    done.style.display = "none";
+    summary.style.display = "none";
+    highScoreSection.style.display = "block";
+
+    // store scores into local storage
+    var savedHighScores = localStorage.getItem("high scores");
+    var scoresArray;
+
+    if (savedHighScores === null) {
+        scoresArray = [];
+    } else {
+        scoresArray = JSON.parse(savedHighScores)
+    }
+
+    var userScore = {
+        initials: initialInput.value,
+        score: finalScore.textContent
+    };
+
+    console.log(userScore);
+    scoresArray.push(userScore);
+
+    // stringify array in order to store in local storage
+    var scoresArrayString = JSON.stringify(scoresArray);
+    window.localStorage.setItem("high scores", scoresArrayString);
+
+    // show current highscores
+    showHighScores();
+}
