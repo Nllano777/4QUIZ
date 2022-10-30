@@ -169,3 +169,15 @@ function chooseB() { checkAnswer(1); }
 function chooseC() { checkAnswer(2); }
 
 function chooseD() { checkAnswer(3); }
+
+// when all Questions are answered or Timer reaches 0, game over
+function gameOver() {
+    summary.style.display = "block";
+    questionDiv.style.display = "none";
+    startDiv.style.display = "none";
+    Timer.style.display = "none";
+    done.style.display = "block";
+
+    // show final score
+    finalScore.textContent = correctAns;
+}
