@@ -90,3 +90,30 @@ var correctAns = 0;
 var questionNum = 0;
 var scoreResult;
 var questionIndex = 0;
+
+// WHEN I click the start button, Timer starts
+var totalTime = 157;
+function newQuiz() {
+    questionIndex = 0;
+    totalTime = 157;
+    RemainingTime.textContent = totalTime;
+    initialInput.textContent = "";
+
+    startDiv.style.display = "none";
+    questionDiv.style.display = "block";
+    Timer.style.display = "block";
+    done.style.display = "none";
+
+    var startTimer = setInterval(function () {
+        totalTime--;
+        RemainingTime.textContent = totalTime;
+        if (totalTime <= 0) {
+            clearInterval(startTimer);
+            if (questionIndex < QuestionArr.length - 1) {
+                gameOver();
+            }
+        }
+    }, 1000);
+
+    showQuiz();
+};
