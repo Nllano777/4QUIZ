@@ -117,3 +117,16 @@ function newQuiz() {
 
     showQuiz();
 };
+
+// then presented with Question and choices
+function showQuiz() {
+    nextQuestion();
+}
+
+function nextQuestion() {
+    questionTitle.textContent = QuestionArr[questionIndex].question;
+    choiceA.textContent = QuestionArr[questionIndex].choices[0];
+    choiceB.textContent = QuestionArr[questionIndex].choices[1];
+    choiceC.textContent = QuestionArr[questionIndex].choices[2];
+    choiceD.textContent = QuestionArr[questionIndex].choices[3];
+}
