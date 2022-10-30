@@ -130,3 +130,42 @@ function nextQuestion() {
     choiceC.textContent = QuestionArr[questionIndex].choices[2];
     choiceD.textContent = QuestionArr[questionIndex].choices[3];
 }
+
+// after question is answered, show if correct or wrong
+function checkAnswer(answer) {
+
+    var lineBreak = document.getElementById("lineBreak");
+    lineBreak.style.display = "block";
+    answerCheck.style.display = "block";
+
+    if (QuestionArr[questionIndex].answer === QuestionArr[questionIndex].choices[answer]) {
+        // correct answer, add 1 score to final score
+        totalTime += 10;
+        correctAns++;
+        // console.log(correctAns);
+        answerCheck.textContent = " =) Correct!";
+    } else {
+        // wrong answer, deduct 10 second from Timer
+        totalTime -= 10;
+        // answerCheck.textContent.style.red;
+        RemainingTime.textContent = totalTime;
+        answerCheck.textContent = " The correct answer is: " + QuestionArr[questionIndex].answer;
+    }
+
+    questionIndex++;
+    // repeat with the rest of Questions
+    if (questionIndex < QuestionArr.length) {
+        nextQuestion();
+    } else {
+        // if no more question, run game over function
+        gameOver();
+    }
+}
+
+function chooseA() { checkAnswer(0); }
+
+function chooseB() { checkAnswer(1); }
+
+function chooseC() { checkAnswer(2); }
+
+function chooseD() { checkAnswer(3); }
