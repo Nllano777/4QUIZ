@@ -264,8 +264,16 @@ choiceD.addEventListener("click", chooseD);
 submitInitialBtn.addEventListener("click", function (event) {
     storeHighScores(event);
 });
+
+submitInitialBtn.addEventListener("keyup", function (event) {
+    storeHighScores(event);
+});
 // view high scores
 viewHighScore.addEventListener("click", function (event) {
+    showHighScores(event);
+});
+
+viewHighScore.addEventListener("keyup", function (event) {
     showHighScores(event);
 });
 // go back 
@@ -273,9 +281,18 @@ goBackBtn.addEventListener("click", function () {
     startDiv.style.display = "block";
     highScoreSection.style.display = "none";
 });
+
+goBackBtn.addEventListener("keyup", function () {
+    startDiv.style.display = "block";
+    highScoreSection.style.display = "none";
+});
 // clears scores
 clearHighScoreBtn.addEventListener("click", function () {
     window.localStorage.removeItem("high scores");
-    listOfHighScores.innerHTML = "clearwd High Scores!";
+    listOfHighScores.innerHTML = "cleared High Scores!";
 
+    clearHighScoreBtn.addEventListener("keyup", function () {
+        window.localStorage.removeItem("high scores");
+        listOfHighScores.innerHTML = "cleared High Scores!";
+    })
 });
